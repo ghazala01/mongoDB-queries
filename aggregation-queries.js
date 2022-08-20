@@ -74,8 +74,9 @@ db.employees.aggregate([
 ])
 
 // query 14 ==== split out individual skills with name
-db.employees.aggregate([
-    { $project: {name: "$name", skills: "$skills"} }
+db.fakeusers.aggregate([
+    { $project: {skills: 1, name: 1 }},
+    { $unwind: "$skills" }
 ])
 
 // query 15 ==== how many people are online in each company
